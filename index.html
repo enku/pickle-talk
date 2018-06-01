@@ -1,0 +1,176 @@
+<html>
+  <head>
+    <title>Python's pickle Module</title>
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="reveal.js/css/theme/league.css">
+    <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section>
+          <h2>Python's pickle Module</h2>
+            <h4>Albert Hopkins &lt;marduk@letterboxes.org&gt;</h4>
+            <h4>31 May 2018</h4>
+          
+          <aside class="notes">
+            <h2>Outline</h2>
+            <ol>
+              <li>What is a pickle?</li>
+              <li>Advantages and disadvantages</li>
+              <li>pickling and unpickling</li>
+              <li>Hands-On</li>
+              <li>Related modules</li>
+            </ol>
+          </aside>
+        </section>
+
+        <section>
+          <h2>pickle</h2>
+          <p>
+              The <code>pickle</code> module is part of the Python standard
+              library and is used to "pickle" or serialize arbitrary
+              Python objects.
+          </p>
+        </section>
+
+        <section>
+          <h2>What is "serialization"?</h2>
+          <blockquote>
+            <p>
+               Serialization is the process of translating data
+               structures or object state into a format that can
+               be stored or transmitted and reconstructed later.
+            </p>
+          </blockquote>
+          <footer>— <a href="https://www.wikiwand.com/en/Serialization">Wikipedia</a></footer>
+          <aside class="notes">
+            <ol>
+              <li>Paraphrased from Wikipedia</li>
+              <li>Storing to disk to use later</li>
+              <li>Sharing with other people or systems</li>
+            </ol>
+          </aside>
+        </section>
+
+        <section>
+          <h2>Common serialization Formats</h2>
+          <ul>
+            <li><a href="https://json.org/">JSON</a></li>
+            <li><a href="http://yaml.org/">YAML</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/XML">XML</a></li>
+          </ul>
+          <aside class="notes">
+            Python pickle predates all these protocols
+          </aside>
+        </section>
+
+        <section>
+          <h2>Why Pickles?</h2>
+          <ul>
+            <li>Pickles can serialize (almost) any Python object.</li>
+            <li>Pickles work with nested/self-referencing objects.</li>
+            <li>Pickles use an efficient binary format.</li>
+          </ul>
+
+          <aside class="notes">
+            <ol>
+              <li>scikit-learn</li>
+              <li>Jupyter notebook</li>
+              <li>code as data</li>
+            </ol>
+          </aside>
+        </section>
+
+        <section>
+          <h2>Why Not Pickles?</h2>
+          <ul>
+            <li>Pickles are Python-only.</li>
+            <li>Pickles are not meant to be read/written by humans.</li>
+            <li>Pickles are not secure.</li>
+          </ul>
+        </section>
+
+        <section data-markdown="creating.md"></section>
+
+        <section data-markdown="opening.md">
+        </section>
+
+        <section>
+          <h1>Hands On</h1>
+
+          <aside class="notes">
+            <ol>
+              <li>Create the pickle (dumper.py)</li>
+              <li>Load the pickle (loader.py) but use Ipython</li>
+              <li>Demonstrate that python-specific pickled objects just work: e.g. 
+                <br/>
+                <code>
+                  i['function'](i['day'].strftime('Today is %A.'))
+                </code>
+              </li>
+            </ol>
+          </aside>
+        </section>
+
+        <section>
+          <section>
+              <h2>Honorable Mention</h2>
+              <ul>
+                <li>shelve</li>
+                <li>struct</li>
+              </ul>
+            </section>
+            <section>
+              <h2><code><a href="https://docs.python.org/3/library/shelve.html">shelve</a></code></h2>
+            <ul>
+              <li>Key-value store: keys are strings; values are arbitrary Python objects</li>
+              <li>Part of the Python standard library</li>
+              <li>Values are stored as pickles</li>
+            </ul>
+          </section>
+          <section>
+            <h2><code><a href="https://docs.python.org/3/library/struct.html">struct</code></a></h2>
+            <ul>
+              <li>Used to read/create binary ("C") data types (structs).</li>
+              <li>
+                e.g. reading/writing graphics files, controlling the terminal,
+                reading/writing zipped files, making pickles.
+              </li>
+          </section>
+        </section>
+
+        <section>
+          <h1>Questions?</h1>
+        </section>
+
+        <section>
+          <h1>Thanks!</h1>
+        </section>
+      </div>
+    </div>
+    <script src="reveal.js/lib/js/head.min.js"></script>
+    <script src="reveal.js/js/reveal.js"></script>
+    <script>
+      Reveal.initialize({
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+          { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+          { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+          { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+
+          { src: 'reveal.js/plugin/notes/notes.js', async: true },
+
+          { src: 'reveal.js/plugin/math/math.js', async: true }
+        ]
+    });
+    </script>
+  </body>
+</html>
